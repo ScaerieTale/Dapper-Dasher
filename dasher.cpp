@@ -10,10 +10,15 @@ int main()
 
     // Acceleration (pixels/frame)/frame
     const int gravity{1};
+
+    // jump velocity
+    const int jumpVel{20};
     
     // Rectangle Dimensions - FOR SCIENCE!!
     const int width{80};
     const int height{50};
+    
+    // Rectangle location in space
     int pos_x{window_width / 2};
     int pos_y{window_height - height};
     int velocity{0};
@@ -43,7 +48,7 @@ int main()
         // Spacebar to jump!
         if (IsKeyPressed(KEY_SPACE))
         {
-            velocity += 10;
+            velocity += jumpVel;
         }
 
         // Update position
