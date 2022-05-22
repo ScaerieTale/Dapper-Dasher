@@ -13,7 +13,8 @@ int main()
 
     // jump velocity
     const int jumpVel{20};
-    
+    bool isInAir{false};    
+
     // Rectangle Dimensions - FOR SCIENCE!!
     const int width{50};
     const int height{80};
@@ -39,6 +40,7 @@ int main()
         {
             // On the ground
             velocity = 0;
+            isInAir = false;
         }
         else
         {
@@ -46,9 +48,10 @@ int main()
             velocity -= gravity;
         }
         // Spacebar to jump!
-        if (IsKeyPressed(KEY_SPACE))
+        if (IsKeyPressed(KEY_SPACE) && !isInAir)
         {
             velocity += jumpVel;
+            isInAir = true;
         }
 
         // Update position
