@@ -9,7 +9,7 @@ int main()
     SetTargetFPS(60);
 
     // Initiate game loop
-    while(WindowShouldClose() != true)
+    while(!WindowShouldClose())
     {
         // In-game window setup
         BeginDrawing();
