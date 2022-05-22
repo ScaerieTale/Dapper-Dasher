@@ -8,20 +8,13 @@ int main()
     InitWindow(window_width, window_height, "Dapper Dasher");
     SetTargetFPS(60);
 
-    // Acceleration (pixels/frame)/frame
-    const int gravity{1};
+    // Acceleration (pixels/sec)/sec
+    const int gravity{1000};
 
-    // jump velocity
-    const int jumpVel{20};
+    // jump velocity in pixles/second
+    const int jumpVel{575};
     bool isInAir{false};    
-
-    // Rectangle dimensions
-    const int width{50};
-    const int height{80};
-    
-    // Rectangle location in space
-    int pos_x{window_width / 2};
-    int pos_y{window_height - height};
+    // Velocity is 0 when not jumping
     int velocity{0};
     
     // Character
@@ -35,8 +28,6 @@ int main()
     scarfyPos.x = window_width/2 - scarfyRec.width/2;
     scarfyPos.y = window_height - scarfyRec.height;
 
-    
-
     // Initiate game loop
     while(!WindowShouldClose())
     {
@@ -45,11 +36,14 @@ int main()
         ClearBackground(WHITE);
 
         // Game logic begin
-        DrawRectangle(pos_x, pos_y, width, height, BLUE);
+        DrawTextureRec(scarfy, scarfyRec, scarfyPos, WHITE);
 
         // Physics
+        // Delta Time
+        const float dT{GetFrameTime()};
+
         // Check for ground
-        if (pos_y >= window_height - height)
+        if (scarfyPos.y >= window_height - scarfy.height)
         {
             // On the ground
             velocity = 0;
@@ -58,7 +52,7 @@ int main()
         else
         {
             // In mid-air, apply gravity
-            velocity -= gravity;
+            velocity -= gravity * dT;
         }
         // Spacebar to jump!
         if (IsKeyPressed(KEY_SPACE) && !isInAir)
@@ -68,7 +62,7 @@ int main()
         }
 
         // Update position
-        pos_y -= velocity;
+        scarfyPos.y -= velocity * dT;
 
 
 
