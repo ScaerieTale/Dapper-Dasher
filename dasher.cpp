@@ -69,4 +69,7 @@ int main()
         // Game logic end
         EndDrawing();
     };
+    UnloadTexture(scarfy);
+    CloseWindow();
+
 }
