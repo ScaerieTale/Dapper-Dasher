@@ -15,7 +15,7 @@ int main()
     const int jumpVel{20};
     bool isInAir{false};    
 
-    // Rectangle Dimensions - FOR SCIENCE!!
+    // Rectangle dimensions
     const int width{50};
     const int height{80};
     
@@ -23,6 +23,19 @@ int main()
     int pos_x{window_width / 2};
     int pos_y{window_height - height};
     int velocity{0};
+    
+    // Character
+    Texture2D scarfy = LoadTexture("textures/scarfy.png");
+    Rectangle scarfyRec;
+    scarfyRec.height = scarfy.height;
+    scarfyRec.width = scarfy.width/6;
+    scarfyRec.x = 0;
+    scarfyRec.y = 0;
+    Vector2 scarfyPos;
+    scarfyPos.x = window_width/2 - scarfyRec.width/2;
+    scarfyPos.y = window_height - scarfyRec.height;
+
+    
 
     // Initiate game loop
     while(!WindowShouldClose())
