@@ -13,7 +13,7 @@ int main()
     const int rect_height{80};
     int rect_x{window_width / 2};
     int rect_y{window_height - rect_height};
-    int rect_velocity{-10};
+    int rect_velocity{0};
 
     // Initiate game loop
     while(!WindowShouldClose())
@@ -24,8 +24,16 @@ int main()
 
         // Game logic begin
         DrawRectangle(rect_x, rect_y, rect_height, rect_width, BLUE);
-        rect_y += rect_velocity;
-
+        // Press SPACE to jump!
+        if (IsKeyPressed(KEY_SPACE) && rect_y > 0)
+        {
+            rect_velocity -= 20;
+            rect_y += rect_velocity;
+        }
+        else if (!IsKeyPressed(KEY_SPACE) && rect_y < window_height - rect_height)
+        {
+            rect_y += 5;
+            };
 
 
 
