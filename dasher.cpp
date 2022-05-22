@@ -15,8 +15,8 @@ int main()
     const int jumpVel{20};
     
     // Rectangle Dimensions - FOR SCIENCE!!
-    const int width{80};
-    const int height{50};
+    const int width{50};
+    const int height{80};
     
     // Rectangle location in space
     int pos_x{window_width / 2};
